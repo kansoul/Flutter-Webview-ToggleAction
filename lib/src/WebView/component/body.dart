@@ -114,11 +114,8 @@ class _BodyState extends State<Body> {
                 onLoadError: (controller, url, code, message) {
                   pullToRefreshController.endRefreshing();
                 },
-                onProgressChanged: (controller, progress) async {
-                  Uri? getCurrentUrl = await controller.getUrl();
-                  widget.updateUrlMagellan!(getCurrentUrl.toString());
-                },
                 onUpdateVisitedHistory: (controller, url, androidIsReload) {
+                  widget.updateUrlMagellan!(url.toString());
                   setState(() {
                     this.url = url.toString();
                     urlController.text = this.url;
